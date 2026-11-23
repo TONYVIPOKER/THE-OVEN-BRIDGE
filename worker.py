@@ -131,7 +131,7 @@ def main():
                     request("POST", "/repos/" + REPO + "/issues/" +
                             str(issue["number"]) + "/comments",
                             {"body": "THE-OVEN-BRIDGE-RESULT\n" +
-                             "\`\`\`json\n" + json.dumps(envelope, indent=2) + "\n\`\`\`"})
+                             "```json\n" + json.dumps(envelope, indent=2) + "\n```"})
                     conn.execute("UPDATE tasks SET state='reported' WHERE task_id=?", (key,))
                     conn.commit()
                     print("Reported task", key, flush=True)
